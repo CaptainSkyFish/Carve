@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(
+      circle at 70% 100%,
+      #190019,
+      #2b124c 40%,
+      #522b5b 75%,
+      black 80%
+    );
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+}
+
+::selection {
+  background-color: rgba(40, 40, 185, 0.467);
+  color: #000000;
+}
+
+@keyframes wave-rise {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.group:hover .animate-hover-letter {
+  animation: wave-rise 0.3s ease-in-out forwards;
+}
