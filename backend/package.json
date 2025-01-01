@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "@cpt_skyfish_/carve-common": "^2.1.0",
+    "@prisma/client": "^6.1.0",
+    "@prisma/extension-accelerate": "^1.2.1",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^2.4.3",
     "hono": "^4.6.5"

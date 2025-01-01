@@ -62,7 +62,7 @@ blogRouter.use('/*', async (c, next) => {
       data: {
         authorId: jwtPayload.id,
         title: body.title,
-        content: body.content
+        content: body.content,
       }
     })
   
@@ -101,8 +101,27 @@ blogRouter.use('/*', async (c, next) => {
   //get all blogs no algo
   blogRouter.get('/bulk', async (c) => {
     const prisma = getPrisma(c.env.DATABASE_URL)
-  
-    const blogs = await prisma.post.findMany({})
+    const likeCount = await prisma.liked.count({
+      where: { postId: "post-id-here" },
+    });
+
+    const blogs = await prisma.post.findMany({
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        _count: {
+          select: {
+            likes: true,
+        }},
+        createdAt: true,
+        published:true,
+        viewCount: true,
+        author: {
+          select: {name: true}
+        }
+      }
+    })
     return c.json({blogs})
   })
 

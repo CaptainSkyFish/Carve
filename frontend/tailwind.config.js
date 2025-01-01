@@ -9,7 +9,11 @@ export default {
   theme: {
     screens,
     fontSize,
-    extend: {},
+    extend: {
+      fontFamily: {
+        katros: ['katros', 'sans-serif']
+      }
+    },
   },
   plugins: [
     fluid

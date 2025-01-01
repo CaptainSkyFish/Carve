@@ -4,8 +4,8 @@ import Appbar from "../components/Appbar";
 export default function Blogs() {
     // const [currentPosts, setCurrentPosts] = useState({title: "", content:"", createdOn:"", })//lazy load more posts (10 posts per scroll)
     
-    return (<div className="">
-        <div className="border-2 border-x-[51px] md:border-x-[101px] border-slate-950">
+    return (<div className="relative">
+        <div className="border-2 border-x-[5px] md:border-x-[10px] border-slate-950">
             <Appbar />
         </div>
         <div className="flex justify-center">

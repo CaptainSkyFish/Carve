@@ -65,6 +65,7 @@ userRouter.post('/signup', async (c) => {
                   name: body.username,
                   email: body.email,
                   password: hashedPassword,
+                  bio: "hello bloggers"
               },
           });
       } catch (error) {

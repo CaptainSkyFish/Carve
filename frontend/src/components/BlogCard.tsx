@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { timeElapsed } from "./TimeElapsed"
 
 interface BlogCardProps {
@@ -10,7 +11,7 @@ interface BlogCardProps {
 export default function BlogCard({ authorName, title, content, createdOn }: BlogCardProps) {
     const readTime = Math.floor(content.split(" ").length/60)
 
-    return <div className="relative  border border-slate-950 p-10 py-6 bg-transparent z-20 transition-all duration-100 ease-in-out transform hover:bg-[#f0ebd8] hover:scale-[0.99999] hover:shadow-[inset_0_0_0_1px] hover:rounded-md hover:shadow-slate-950">
+    return <div className="relative border border-slate-950 p-10 py-6 z-20 transition-all duration-300 ease-in-out transform hover:bg-[#eee9d63b] hover:backdrop-blur-xl hover:scale-[0.99999] hover:shadow-[inset_0_0_0_1px] hover:rounded-md hover:shadow-slate-950">
         <div className="text-sm text-gray-700 flex items-center space-x-2">
          <DatePublished createdOn={createdOn}/>
          <span className="text-gray-500">({timeElapsed(createdOn)})</span>
@@ -37,20 +38,20 @@ export default function BlogCard({ authorName, title, content, createdOn }: Blog
 }
 
 export const Avatar = ({ authorName, size}: { authorName: string, size: string | number }) => {
-    const getRandomPastelColor = () => {
+    const backgroundColor = useMemo(() => {
       const hue = Math.floor(Math.random() * 360)
       return `hsl(${hue}, 70%, 85%)`
-    }
-  
+    }, [])
+    
     const avatarStyle = {
-      backgroundColor: getRandomPastelColor(),
+      backgroundColor,
       width: `${size}rem`,
       height: `${size}rem`,
     }
   
     return (
       <div
-        className={` flex items-center justify-center rounded-full text-white text-lg font-bold`}
+        className={` flex font-katros items-center justify-center rounded-full text-white text-lg font-bold`}
         style={avatarStyle}
       >
         {authorName.charAt(0).toUpperCase()}

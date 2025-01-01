@@ -12,7 +12,6 @@ function AppWrapper() {
   const [showBackground, setShowBackground] = useState(false)
 
   useEffect(() => {
-    // Specify paths where the background should be hidden
     const hiddenBackgroundRoutes = ["/signup", "/signin"]
     setShowBackground(!hiddenBackgroundRoutes.includes(location.pathname))
   }, [location])
