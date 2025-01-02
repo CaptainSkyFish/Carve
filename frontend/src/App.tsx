@@ -6,6 +6,7 @@ import Blogs from "./pages/Blogs"
 import Background from "./UI/Background"
 import "./App.css"
 import { useEffect, useState } from "react"
+import Appbar from "./components/Appbar"
 
 function AppWrapper() {
   const location = useLocation()
@@ -19,6 +20,9 @@ function AppWrapper() {
   return (
     <div>
         {showBackground && <Background />}
+        <div className="relative border-2 border-x-[5px] md:border-x-[10px] border-slate-950">
+            <Appbar />
+        </div>
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />

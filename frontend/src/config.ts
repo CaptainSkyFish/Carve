@@ -1,1 +1,1 @@
-export const BACKEND_URL = "https://backend-carve.ajaystd9756.workers.dev" 
+export const BACKEND_URL = "https://backend-carve.j-tech.workers.dev" 

@@ -135,7 +135,22 @@ blogRouter.get('/:id', async (c) => {
     const id = c.req.param('id')
     if(id){
       const blog = await prisma.post.findUnique({
-        where: {id}
+        where: {id},
+        select: {
+          id: true,
+        title: true,
+        content: true,
+        _count: {
+          select: {
+            likes: true,
+        }},
+        createdAt: true,
+        published:true,
+        viewCount: true,
+        author: {
+          select: {name: true}
+        }
+        }
       })
       c.status(200)
       return c.json(blog)

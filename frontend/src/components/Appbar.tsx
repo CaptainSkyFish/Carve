@@ -28,7 +28,7 @@ export default function Appbar() {
                 />
             </div>
             <div
-                className={`fixed bottom-10 p-2 left-1/2 transform -translate-x-1/2 bg-transparent backdrop-blur-lg z-50 shadow-xl border border-gray-200 rounded-2xl transition-transform ${
+                className={`fixed bottom-10 p-2 left-1/2 transform -translate-x-1/2 bg-transparent backdrop-blur-lg z-50 shadow-md hover:shadow-[#0000ff17] border border-gray-200 rounded-2xl transition-transform ${
                     isCollapsed ? "translate-y-10" : ""
                 }`}
             >
@@ -68,9 +68,9 @@ export default function Appbar() {
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
                             viewBox="0 0 24 24"
-                            strokeWidth="1.5"
+                            strokeWidth="1"
                             stroke="currentColor"
-                            className="w-6 h-6 transition-transform ease-in-out duration-200 hover:scale-[1.2]"
+                            className="w-6 h-6 transition-all ease-in-out duration-200 hover:scale-[1.2]"
                         >
                             <path
                         fillRule="evenodd"
@@ -94,7 +94,7 @@ export default function Appbar() {
                             stroke="currentColor"
                             className="w-7 h-7 transition-transform ease-in-out duration-200 hover:scale-[1.2]"
                         >
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                         <span className="absolute -top-8 opacity-0 group-hover:opacity-100 text-xs transition-opacity bg-gray-800 text-white px-2 py-1 rounded shadow-md">
                             Liked
