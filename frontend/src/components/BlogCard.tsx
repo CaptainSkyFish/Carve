@@ -4,17 +4,18 @@ import { Link } from "react-router-dom"
 
 interface BlogCardProps {
     id: string
-    authorName: string,
-    title: string,
-    content: string, 
+    authorName: string
+    content: string
+    title: string
     createdOn: string
+    description: string
 }
 
-export default function BlogCard({ authorName, title, content, createdOn, id }: BlogCardProps) {
+export default function BlogCard({ authorName, title, content, createdOn, id, description }: BlogCardProps) {
     const readTime = Math.floor(content.split(" ").length/60)
 
     return <Link to={`/blog/${id}`}> 
-        <div className="relative border border-slate-950 p-10 m-[0.04rem] py-6 z-20 transition-all duration-300 ease-in-out transform hover:bg-[#fefbf0] hover:backdrop-blur-xl hover:scale-[0.99999] hover:shadow-[inset_0_0_0_1px] rounded-sm hover:rounded-md hover:shadow-slate-950">
+        <div className="relative border border-slate-950 p-10 m-[0.04rem] py-6 z-20 transition-all duration-300 ease-in-out transform hover:bg-[#fefbf0] hover:backdrop-blur-xl hover:scale-[1.0019] hover:shadow-[inset_0_0_0_1px] rounded-sm hover:rounded-md hover:shadow-slate-950">
         <div className="text-sm text-gray-700 flex items-center space-x-2">
          <DatePublished createdOn={createdOn}/>
          <span className="text-gray-500">({timeElapsed(createdOn)})</span>
@@ -34,7 +35,7 @@ export default function BlogCard({ authorName, title, content, createdOn, id }: 
         </div>
         </div>
 
-        <p className="text-black text-pretty text-sm mt-4 lg:px-20 leading-relaxed">{contentPreview(content)}</p>
+        <p className="text-black text-pretty text-sm mt-4 lg:px-20 leading-relaxed">{description}</p>
     </div>
     </div></Link>
     
@@ -63,14 +64,14 @@ export const Avatar = ({ authorName, size}: { authorName: string, size: string |
   }
   
   
-  const contentPreview = (content: string) => {
-        const sentences = content.split('.').filter(Boolean)
-        const truncated = sentences.slice(0, 3).join('. ').slice(0, 150) + "..."
-        return truncated.trim()
-      }
+  // const contentPreview = (content: string) => {
+  //       const sentences = content.split('.').filter(Boolean)
+  //       const truncated = sentences.slice(0, 3).join('. ').slice(0, 150) + "..."
+  //       return truncated.trim()
+  //     }
 
 
-  const DatePublished = ({ createdOn }: {createdOn: string}) => {
+  export const DatePublished = ({ createdOn }: {createdOn: string}) => {
       return <div className="space-x-2"> 
             <span>{new Date(createdOn).toLocaleString("en-US", { month: "long" })}</span>
             <span>{new Date(createdOn).getDate()},</span>

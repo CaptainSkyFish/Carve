@@ -13,22 +13,23 @@ model User {
   email     String   @unique
   name      String
   password  String
-  bio       String?
+  bio       String?  @default("Welcome to my blog! I'm passionate about sharing ideas, stories, and insights that inspire and engage. Whether it's about personal growth, creative endeavors, or the latest trends, this space is dedicated to exploring topics that matter. Let's connect, learn, and grow together!")
   posts     Post[]
   createdAt DateTime @default(now())
   likes     Liked[]
 }
 
 model Post {
-  id        String   @id @default(uuid())
-  title     String
-  viewCount Int      @default(0)
-  content   String
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
-  createdAt DateTime @default(now())
-  likes     Liked[]
+  id          String   @id @default(uuid())
+  title       String
+  description String   @default("")
+  viewCount   Int      @default(0)
+  content     String
+  published   Boolean  @default(false)
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+  createdAt   DateTime @default(now())
+  likes       Liked[]
 }
 
 model Liked {

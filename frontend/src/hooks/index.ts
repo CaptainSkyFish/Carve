@@ -50,8 +50,12 @@ export const useBlogs = () => {
 
 interface Blog {
     id: string
+    description: string
     title: string
     content: string
-    author: {name: string}
+    author: {
+        name: string
+        bio: string
+    }
     createdAt: string
 }

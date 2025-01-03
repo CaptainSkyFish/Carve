@@ -63,6 +63,7 @@ blogRouter.use('/*', async (c, next) => {
         authorId: jwtPayload.id,
         title: body.title,
         content: body.content,
+        description: body.description
       }
     })
   
@@ -91,7 +92,8 @@ blogRouter.use('/*', async (c, next) => {
       },
       data: {
         title: body.title,
-        content: body.content
+        content: body.content,
+        description: body.description
       }
     })
     c.status(200)
@@ -116,9 +118,13 @@ blogRouter.use('/*', async (c, next) => {
         }},
         createdAt: true,
         published:true,
+        description: true,
         viewCount: true,
         author: {
-          select: {name: true}
+          select: {
+            name: true,
+            bio: true
+          }
         }
       }
     })
@@ -145,10 +151,14 @@ blogRouter.get('/:id', async (c) => {
             likes: true,
         }},
         createdAt: true,
+        description: true,
         published:true,
         viewCount: true,
         author: {
-          select: {name: true}
+          select: {
+            name: true,
+            bio: true
+          }
         }
         }
       })

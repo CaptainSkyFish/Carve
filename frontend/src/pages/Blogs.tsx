@@ -8,7 +8,7 @@ export default function Blogs() {
     return (
         
         <div className="flex justify-center">
-            <div className="flex-shrink min-w-[50px] z-10 md:min-w-[100px] bg-transparent border border-slate-950"></div>
+            <div className="flex-shrink border-t-0 min-w-[50px] z-10 md:min-w-[100px] bg-transparent border border-slate-950"></div>
             <div className="max-w-8xl bg-slate-300 w-full">
             {loading ? (
                         <BlogsCardSkeleton />
@@ -16,6 +16,7 @@ export default function Blogs() {
                         blogs.map((blog) => (
                             <BlogCard
                                 key={blog.id}
+                                description={blog.description}
                                 id={blog.id}
                                 authorName={blog.author.name}      
                                 title={blog.title}
@@ -25,7 +26,7 @@ export default function Blogs() {
                         ))
                     )}
             </div>
-            <div className="flex-shrink z-10 min-w-[50px] md:min-w-[100px] bg-transparent border border-slate-950">
+            <div className="flex-shrink border-t-0 z-10 min-w-[50px] md:min-w-[100px] bg-transparent border border-slate-950">
             </div>
         </div>
     );
