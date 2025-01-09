@@ -7,6 +7,7 @@ import Background from "./UI/Background"
 import "./App.css"
 import { useEffect, useState } from "react"
 import Appbar from "./components/Appbar"
+import Create from "./pages/Create"
 
 function AppWrapper() {
   const location = useLocation()
@@ -25,6 +26,7 @@ function AppWrapper() {
         </div>
         <Routes>
           <Route path="/signup" element={<Signup />} />
+          <Route path="/create" element={<Create />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:id" element={<Blog />} />

@@ -2,8 +2,6 @@ export default function Background() {
     return (
       <div className="top-bg">
         <div className="background">
-          <div className="circle one"></div>
-          <div className="circle two"></div>
   
           {/* Grainy overlay */}
           <svg className="grain">

@@ -17,6 +17,7 @@ export default function Auth( {type} : AuthProps ) {
         username: "",
         email: "",
         password: "",
+        bio: ""
     })
 
     const [signinCredentials, setSigninCredentials] = useState<SignInInput>({
@@ -83,6 +84,16 @@ export default function Auth( {type} : AuthProps ) {
             setSigninCredentials({
               ...signinCredentials,
               password: e.target.value,
+            })
+          }
+        />
+        <LabelledInput
+          label="Bio"
+          type="text"
+          onChange={(e) =>
+            setSignupCredentials({
+              ...signupCredentials,
+              bio: e.target.value,
             })
           }
         />

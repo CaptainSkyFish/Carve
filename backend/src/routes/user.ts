@@ -65,7 +65,7 @@ userRouter.post('/signup', async (c) => {
                   name: body.username,
                   email: body.email,
                   password: hashedPassword,
-                  bio: "hello bloggers"
+                  bio: body.bio
               },
           });
       } catch (error) {
@@ -86,7 +86,7 @@ userRouter.post('/signup', async (c) => {
 
       c.status(200);
       console.log(token)
-      return c.json({ token });
+      return c.json({ token, username:user.name });
   } catch (error) {
       console.error("Unexpected error:", error);
       c.status(500);

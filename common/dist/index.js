@@ -9,6 +9,7 @@ exports.signUpInput = zod_1.default.object({
     username: zod_1.default.string(),
     email: zod_1.default.string().email(),
     password: zod_1.default.string().min(8),
+    bio: zod_1.default.string()
 });
 exports.signInInput = zod_1.default.object({
     email: zod_1.default.string().email(),

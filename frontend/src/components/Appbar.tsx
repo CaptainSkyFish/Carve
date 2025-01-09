@@ -5,6 +5,30 @@ import {TextHover} from "../UI/TextHover"
 
 export default function Appbar() {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [authorName, setAuthorName] = useState<string>("");
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            const cachedName = localStorage.getItem("authorName");
+            if (cachedName) {
+                setAuthorName(cachedName);
+            } else {
+                fetch("/api/user", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        setAuthorName(data.name);
+                        localStorage.setItem("authorName", data.name); // Cache for future use
+                    })
+                    .catch((error) => console.error("Failed to fetch user details:", error));
+            }
+        }
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,7 +42,9 @@ export default function Appbar() {
 
     return (
         <>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center overflow-hidden">
+            <div className="circle one"></div>
+            <div className="circle two"></div>
                 <TextHover
                     font={"katros"}
                     content={"CARVE"}
@@ -27,6 +53,7 @@ export default function Appbar() {
                     fontWeight={700}
                 />
             </div>
+            
             <div
                 className={`fixed bottom-10 p-2 left-1/2 transform -translate-x-1/2 bg-transparent backdrop-blur-lg z-50 shadow-md hover:shadow-[#0000ff17] border border-gray-200 rounded-2xl transition-transform ${
                     isCollapsed ? "translate-y-10" : ""
@@ -56,7 +83,7 @@ export default function Appbar() {
                                 d="M11.6702 7.20292C11.2583 7.24656 10.9598 7.61586 11.0034 8.02777C11.0471 8.43968 11.4164 8.73821 11.8283 8.69457L11.6702 7.20292ZM13.5216 9.69213C13.6831 10.0736 14.1232 10.2519 14.5047 10.0904C14.8861 9.92892 15.0644 9.4888 14.9029 9.10736L13.5216 9.69213ZM16.6421 15.0869C16.349 14.7943 15.8741 14.7947 15.5815 15.0879C15.2888 15.381 15.2893 15.8559 15.5824 16.1485L16.6421 15.0869ZM18.9704 19.5305C19.2636 19.8232 19.7384 19.8228 20.0311 19.5296C20.3237 19.2364 20.3233 18.7616 20.0301 18.4689L18.9704 19.5305ZM11.8283 8.69457C12.5508 8.61801 13.2384 9.02306 13.5216 9.69213L14.9029 9.10736C14.3622 7.83005 13.0496 7.05676 11.6702 7.20292L11.8283 8.69457ZM15.5824 16.1485L18.9704 19.5305L20.0301 18.4689L16.6421 15.0869L15.5824 16.1485Z" fill="#000000"
                             />
                         </svg>
-                        <span className="absolute -top-8 opacity-0 group-hover:opacity-100 text-xs transition-opacity bg-gray-800 text-white px-2 py-1 rounded shadow-md">
+                        <span className="absolute -top-8 flex justify-center opacity-0 group-hover:opacity-100 text-xs transition-opacity bg-gray-800 text-white px-2 py-1 rounded shadow-md">
                             Search
                         </span>
                     </Link>
@@ -104,7 +131,7 @@ export default function Appbar() {
                         to="/profile"
                         className="relative flex flex-col items-center text-gray-700 hover:text-gray-900 group"
                     >
-                        <Avatar size={2.5} authorName={"AJ"} />
+                        <Avatar size={2.5} authorName={authorName} />
                         <span className="absolute -top-8 opacity-0 group-hover:opacity-100 text-xs transition-opacity bg-gray-800 text-white px-2 py-1 rounded shadow-md">
                             Profile
                         </span>

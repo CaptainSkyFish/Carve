@@ -17,12 +17,12 @@
 
 .circle {
   position: absolute;
-  width: 650px;
-  height: 650px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(0, 0, 255, 0.5) 30%,
+    rgba(0, 0, 255, 0.5) 10%,
     rgba(0, 0, 255, 0) 80%
   );
   filter: blur(10px) contrast(2); /* Adjust blur and contrast for better visibility */
@@ -30,13 +30,13 @@
 }
 
 .circle.one {
-  top: 45%;
-  left: 45%;
+  top: 43%;
+  left: 48.5%;
 }
 
 .circle.two {
-  top: 58%;
-  left: 55%;
+  top: 57%;
+  left: 51.5%;
 }
 
 .grain {

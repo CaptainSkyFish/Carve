@@ -15,7 +15,7 @@ export default function BlogCard({ authorName, title, content, createdOn, id, de
     const readTime = Math.floor(content.split(" ").length/60)
 
     return <Link to={`/blog/${id}`}> 
-        <div className="relative border border-slate-950 p-10 m-[0.04rem] py-6 z-20 transition-all duration-300 ease-in-out transform hover:bg-[#fefbf0] hover:backdrop-blur-xl hover:scale-[1.0019] hover:shadow-[inset_0_0_0_1px] rounded-sm hover:rounded-md hover:shadow-slate-950">
+        <div className="relative border border-slate-800 rounded-md p-10 py-6 z-20 transition-all duration-300 ease-in-out transform hover:bg-[#f4f0e8c5] hover:backdrop-blur-xl hover:shadow-[inset_0_0_0_1px] hover:rounded-lg hover:shadow-slate-800">
         <div className="text-sm text-gray-700 flex items-center space-x-2">
          <DatePublished createdOn={createdOn}/>
          <span className="text-gray-500">({timeElapsed(createdOn)})</span>
