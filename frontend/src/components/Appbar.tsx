@@ -11,21 +11,9 @@ export default function Appbar() {
         const token = localStorage.getItem("token");
 
         if (token) {
-            const cachedName = localStorage.getItem("authorName");
+            const cachedName = localStorage.getItem("username");
             if (cachedName) {
-                setAuthorName(cachedName);
-            } else {
-                fetch("/api/user", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                    .then((res) => res.json())
-                    .then((data) => {
-                        setAuthorName(data.name);
-                        localStorage.setItem("authorName", data.name); // Cache for future use
-                    })
-                    .catch((error) => console.error("Failed to fetch user details:", error));
+                setAuthorName(cachedName)
             }
         }
     }, []);
@@ -131,10 +119,36 @@ export default function Appbar() {
                         to="/profile"
                         className="relative flex flex-col items-center text-gray-700 hover:text-gray-900 group"
                     >
-                        <Avatar size={2.5} authorName={authorName} />
-                        <span className="absolute -top-8 opacity-0 group-hover:opacity-100 text-xs transition-opacity bg-gray-800 text-white px-2 py-1 rounded shadow-md">
-                            Profile
-                        </span>
+                        {authorName ? (
+                        <Link
+                            to="/profile"
+                            className="relative flex flex-col items-center text-gray-700 hover:text-gray-900 group"
+                        >
+                            <div className="max-w-fit max-h-fit rounded-full transition-shadow duration-200 hover:shadow-md">
+                                <Avatar size={2.5} authorName={authorName} />
+                            </div>
+                            <span className="absolute -top-8 opacity-0 group-hover:opacity-100 text-xs transition-opacity bg-gray-800 text-white px-2 py-1 rounded shadow-md">
+                                Profile
+                            </span>
+                        </Link>
+                    ) : (
+                        <div className="flex space-x-4">
+                            <Link
+                                to="/signin"
+                                className="relative inline-block p-px font-semibold text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
+                            >
+                            <span
+                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                            ></span>
+
+                            <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-800">
+                                <span className="text-nowrap transition-all duration-500"
+                                    >Log In</span>
+                            </span>
+                            </Link>
+                        </div>
+                    )}
+                        
                     </Link>
                 </div>
             </div>

@@ -30,8 +30,9 @@ export default function Auth( {type} : AuthProps ) {
       try {        
         const credentials = type === "signin" ? signinCredentials : signupCredentials
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`, credentials)
-          const { token } = response.data
-          localStorage.setItem("token", token);
+          const { token, username } = response.data
+          localStorage.setItem("token", token)
+          localStorage.setItem("username", username)
           navigate("/blogs")
           console.log("Token successfully saved!")
           return token
