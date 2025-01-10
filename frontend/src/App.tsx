@@ -8,6 +8,7 @@ import "./App.css"
 import { useEffect, useState } from "react"
 import Appbar from "./components/Appbar"
 import Create from "./pages/Create"
+import Profile from "./pages/Profile"
 
 function AppWrapper() {
   const location = useLocation()
@@ -20,16 +21,20 @@ function AppWrapper() {
 
   return (
     <div>
-        {showBackground && <Background />}
+        {showBackground? 
+        (<div><Background />
         <div className="relative border-2 border-x-[5px] md:border-x-[10px] border-slate-950">
             <Appbar />
-        </div>
+        </div></div>) : 
+        (null)}
+
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/create" element={<Create />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/profile/*" element={<Profile />} />
         </Routes>
     </div>
   )

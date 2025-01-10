@@ -2,6 +2,7 @@ import { useBlogs } from "../hooks"
 import { Avatar, DatePublished } from "./BlogCard"
 import { BlogsCardSkeleton } from "./BlogCardSkeleton"
 import { timeElapsed } from "./TimeElapsed"
+import { Link } from "react-router-dom"
 
 interface Blog {
     id: string
@@ -23,7 +24,7 @@ export default function BlogPage({authorName, title, content, description, autho
                 <div className="flex-1 bg-gray-200/50 rounded-lg shadow-md p-6 overflow-auto">
                     <h1 className="text-[35px] lg:text-[42px] font-bold text-left text-gray-800 mb-4">{title}</h1>
                     <h2 className="text-[18px] lg:text-[22px] font-bold text-left text-gray-500 mb-4">{description}</h2>
-                    <p className="text-gray-700 lg:text-md leading-relaxed">{content}</p>
+                    <p className="text-gray-700 lg:text-md text-justify leading-relaxed">{content}</p>
                 </div>
 
                 {/* Author & Other Blogs */}
@@ -31,15 +32,16 @@ export default function BlogPage({authorName, title, content, description, autho
                     {/* Author Box */}
                     <div className="bg-gray-200/50 rounded-lg shadow-md p-2">
                     <div className="font-bold text-gray-800 p-4 text-3xl">Author</div>
+                    <Link to={`/profile/${authorName}`}>
                     <div className="p-4 bg-gray-200/50 backdrop-blur-md shadow-sm rounded-lg hover:shadow-lg hover:backdrop-blur-xl hover:bg-gray-200/80 transition-all duration-300 ease-in-out">
                     <div className="flex-shrink-0 flex flex-row items-center">
                         <Avatar authorName={authorName} size={3.5} />
                         <h2 className="text-lg px-[3%] font-bold text-gray-800">{authorName}</h2>
                     </div>
                     <div>
-                        <p className="text-gray-600 font-semibold text-md mt-1">{authorBio}</p>
+                        <p className="text-gray-600 text-justify font-semibold text-md mt-1">{authorBio}</p>
                     </div>
-                    </div>
+                    </div></Link>
                     
                     <div className="p-4">
                     <div className="text-md text-slate-800 flex items-center space-x-2 mt-2">

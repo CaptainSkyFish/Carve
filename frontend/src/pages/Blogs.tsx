@@ -9,7 +9,7 @@ export default function Blogs() {
         
         <div className="flex justify-center">
             <div className="flex-shrink border-t-0 min-w-[50px] z-10 md:min-w-[100px] bg-transparent border border-slate-950"></div>
-            <div className="max-w-8xl bg-slate-300 w-full">
+            <div className="max-w-8xl bg-white w-full">
             {loading ? (
                         <BlogsCardSkeleton />
                     ) : (

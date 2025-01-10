@@ -5,11 +5,13 @@ compatibility_flags = ["nodejs_compat"]
 
 # Production environment
 [env.production]
-account_id = "$ACCOUNT_ID"
+account_id = "8fadd374bed37efce707b9a19e22db81"
 [vars]
-DATABASE_URL = "$DATABASE_URL"
-JWT_SECRET = "$JWT_SECRET"
-saltRounds = "$saltRounds"
+DATABASE_URL = "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiYWUxYzc5YWItMjUwMC00NjlkLThhYWQtMTVhYzMyNDNkZDhjIiwidGVuYW50X2lkIjoiZWIwOGRiMzBkOGJkNzBiZWNmNjU2Yzg3YTI3NzQ5ZjU0MmYwNzU4MmYzZjY5NWY3Njg4YzcyMWIwMWZlNTM2NiIsImludGVybmFsX3NlY3JldCI6ImVjMjRiYjRhLWRiODctNDgxNi05ZGZjLWQ1YWI0N2M0YTYxMCJ9.nRfDmq7YVEmbyQ6J5hl6fUZ2D3RuIWYCuqiAhutG5_o"
+
+JWT_SECRET = "23c7c46dba9281115c30f34820a9c550e7830339ea2e994ba303f1d10d57d0e06"
+
+saltRounds = 10
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"

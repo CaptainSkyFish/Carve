@@ -134,10 +134,7 @@ blogRouter.use('/*', async (c, next) => {
   //get blog with id
 blogRouter.get('/:id', async (c) => {
   const prisma = getPrisma(c.env.DATABASE_URL)
-    
-    console.log(c.env.DATABASE_URL)
-    console.log(c.env.JWT_SECRET)
-    console.log(c.env.saltRounds)
+  
     const id = c.req.param('id')
     if(id){
       const blog = await prisma.post.findUnique({
