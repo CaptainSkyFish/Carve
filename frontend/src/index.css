@@ -30,6 +30,23 @@
   }
 }
 
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.animate-loading {
+  position: absolute;
+  animation: loading 1.5s infinite linear;
+}
+
 .group:hover .animate-hover-letter {
   animation: wave-rise 0.3s ease-in-out forwards;
 }
@@ -37,4 +54,20 @@
 @font-face {
   font-family: "katros";
   src: url("./assets/fonts/katros.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "anton";
+  src: url("./assets/fonts/Anton-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "dmserif";
+  src: url("./assets/fonts/DMSerifText-Regular.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: "fjalla";
+  src: url("./assets/fonts/FjallaOne-Regular.ttf") format("truetype");
 }

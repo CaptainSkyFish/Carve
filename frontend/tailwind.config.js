@@ -11,7 +11,10 @@ export default {
     fontSize,
     extend: {
       fontFamily: {
-        katros: ['katros', 'sans-serif']
+        katros: ['katros', 'sans-serif'],
+        anton: ['anton', 'sans-serif'],
+        dmserif: ['dmserif', 'sans'],
+        fjalla: ['fjalla', 'sans']
       }
     },
   },

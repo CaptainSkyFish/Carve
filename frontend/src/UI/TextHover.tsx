@@ -1,7 +1,6 @@
 // https://github.com/ruucm/shadergradient/
 
-import {motion} from 'framer-motion'
-
+import { motion } from "framer-motion";
 
 interface TextHoverProps {
   fontSize?: string;
@@ -12,7 +11,7 @@ interface TextHoverProps {
   font?: string | null;
   fontWeight?: number;
   delay?: number;
-  onClick?: ()=>void;
+  onClick?: () => void;
   border?: boolean;
   isFramerCanvas?: boolean;
 }
@@ -21,7 +20,7 @@ const letterContainerVariants = {
   initial: { transition: { staggerChildren: 0.015 } },
   default: { transition: { staggerChildren: 0.015 } },
   hover: { transition: { staggerChildren: 0.03 } },
-}
+};
 
 const letterVariants = {
   initial: {
@@ -29,7 +28,7 @@ const letterVariants = {
     y: 60,
     rotate: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       damping: 12,
       stiffness: 200,
     },
@@ -39,7 +38,7 @@ const letterVariants = {
     y: 0,
     rotate: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       damping: 20,
       stiffness: 200,
     },
@@ -49,22 +48,23 @@ const letterVariants = {
     y: -4,
     rotate: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       damping: 12,
       stiffness: 200,
     },
   },
-}
-
+};
 
 export function TextHover({
   fontSize,
   color,
   content,
-  referer = '',
+  // @ts-ignore
+  referer = "",
   delay = 0,
   width = null,
   font = null,
+  //@ts-ignore
   onClick = () => void 0,
   border = false,
   fontWeight = 400,
@@ -73,76 +73,77 @@ export function TextHover({
   return (
     <motion.div
       style={{
-        position: 'relative',
-        wordBreak: 'break-word',
-        maxWidth: width === 0 ? 'fit-content' : width,
-        width: 'fit-content',
-        height: 'fit-content',
+        position: "relative",
+        wordBreak: "break-word",
+        //@ts-ignore
+        maxWidth: width === 0 ? "fit-content" : width,
+        width: "fit-content",
+        height: "fit-content",
         ...(font ? { fontFamily: `"${font}"` } : {}), // Apply fontFamily only if font is provided
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         color: color,
-        whiteSpace: 'nowrap',
-        userSelect: 'none',
+        whiteSpace: "nowrap",
+        userSelect: "none",
       }}
     >
       <motion.h1
         variants={letterContainerVariants}
-        initial={isFramerCanvas ? 'default' : 'initial'}
-        whileInView={'default'}
-        whileHover={'hover'}
+        initial={isFramerCanvas ? "default" : "initial"}
+        whileInView={"default"}
+        whileHover={"hover"}
         style={{
           fontWeight: fontWeight,
           margin: 0,
-          width: 'fit-content',
-          userSelect: 'none',
+          width: "fit-content",
+          userSelect: "none",
         }}
         transition={{ delay: delay }}
       >
         <div
           style={{
-            textAlign: 'left',
+            textAlign: "left",
             fontSize: fontSize,
             color: color,
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            height: 'fit-content',
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            height: "fit-content",
           }}
         >
-          {content.split(' ').map((word, wordI) => (
+          {content.split(" ").map((word, wordI) => (
             <div
               key={`word-${word}-${wordI}`}
               style={{
-                height: 'fit-content',
-                display: 'flex',
-                alignItems: 'center',
+                height: "fit-content",
+                display: "flex",
+                alignItems: "center",
               }}
             >
               {Array.from(word).map((letter, index) => (
                 <motion.div
                   key={`${index}-${letter}`}
                   style={{
-                    width: 'fit-content',
-                    height: 'fit-content',
-                    overflow: 'hidden',
-                    position: 'relative',
-                    display: 'inline-block',
+                    width: "fit-content",
+                    height: "fit-content",
+                    overflow: "hidden",
+                    position: "relative",
+                    display: "inline-block",
                   }}
                 >
                   <motion.span
                     variants={letterVariants}
                     transition={{ duration: 0.5 }}
                     style={{
-                      position: 'relative',
-                      display: 'inline-block',
+                      position: "relative",
+                      display: "inline-block",
                     }}
                   >
-                    {letter === ' ' ? '\u00A0' : letter}
+                    {letter === " " ? "\u00A0" : letter}
                   </motion.span>
                 </motion.div>
               ))}
-              {wordI !== content.split(' ').length - 1 ? '\u00A0' : null}
+              {wordI !== content.split(" ").length - 1 ? "\u00A0" : null}
             </div>
           ))}
         </div>
@@ -150,7 +151,7 @@ export function TextHover({
           <motion.div
             style={{ background: color, height: 2, marginTop: 3 }}
             initial={{ width: 0 }}
-            animate={{ width: '100%' }}
+            animate={{ width: "100%" }}
             transition={{ delay: delay + 0.5 }}
           />
         )}
