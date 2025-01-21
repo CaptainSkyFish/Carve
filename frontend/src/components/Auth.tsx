@@ -13,7 +13,6 @@ interface AuthProps {
 
 export default function Auth({ type }: AuthProps) {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [signupCredentials, setSignupCredentials] = useState<SignUpInput>({
     username: "",
     email: "",
@@ -28,7 +27,6 @@ export default function Auth({ type }: AuthProps) {
 
   async function getToken(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    setLoading(true);
     try {
       const credentials =
         type === "signin" ? signinCredentials : signupCredentials;
@@ -43,18 +41,7 @@ export default function Auth({ type }: AuthProps) {
       console.log("Token successfully saved!");
     } catch (error) {
       console.error("Error occurred during authentication:", error);
-    } finally {
-      setLoading(false);
     }
-  }
-
-  if (loading) {
-    return (
-      <div className="relative">
-        <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 animate-loading"></div>
-        <div className="text-center mt-10">Loading...</div>
-      </div>
-    );
   }
 
   return (
