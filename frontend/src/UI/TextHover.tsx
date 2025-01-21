@@ -59,10 +59,12 @@ export function TextHover({
   fontSize,
   color,
   content,
+  //@ts-ignore
   referer = "",
   delay = 0,
   width = null,
   font = null,
+  //@ts-ignore
   onClick = () => void 0,
   border = false,
   fontWeight = 400,
@@ -73,6 +75,7 @@ export function TextHover({
       style={{
         position: "relative",
         wordBreak: "break-word",
+        //@ts-ignore
         maxWidth: width === 0 ? "fit-content" : width,
         width: "fit-content",
         height: "fit-content",
